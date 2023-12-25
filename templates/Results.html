@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("static/images/recipe3.JPG") fixed center/cover;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+         #container {
+            text-align: center;
+            white-space: pre-line;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+            width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box; /* Ensure padding and border don't add to the width */
+        }
+
+
+        h1 {
+            color: #333;
+        }
+
+        #outputBox {
+             background: url("static/images/recipe6.JPG") fixed center/cover;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        #buttonContainer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #buttonContainer button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #buttonContainer button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <div id="container">
+            <h1>Recommended Recipe Details </h1>
+            <div id="outputBox">
+                <h3>{{output1}}</h3>
+            </div>
+            <div id="reviewSection">
+                <h2>User Review and Rating</h2>
+                <div id="userReview">
+                    <a href="/review">Leave a Review</a>
+                    <!-- Display existing reviews and ratings here -->
+                    {% for review in reviews %}
+                        <p>Review: {{ review['review'] }} | Rating: {{ review['rating'] }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        <div id="buttonContainer">
+            <button onclick="saveResults()">Save</button>
+            <button onclick="printResults()">Print </button>
+        </div>
+    </div>
+
+    <script>
+        function saveResults() {
+             var dataToSave = "Hello, world!";
+
+        // Use localStorage to save the data
+        localStorage.setItem('savedData', dataToSave);
+
+        // Optionally, you can provide feedback to the user
+        alert('Data saved successfully!');
+
+        }
+
+        function printResults() {
+            // Add your code to print the results here
+            window.print();
+        }
+    </script>
+         </div>
+    </center>
+
+</body>
+
+</html>
